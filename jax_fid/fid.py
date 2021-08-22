@@ -28,7 +28,7 @@ def compute_statistics(path, params, apply_fn, batch_size=1, img_size=None):
         images.append(img)
     images = jnp.array(images)
     
-    num_batches = max(1, images.shape[0] // batch_size)
+    num_batches = int(np.ceil(images.shape[0] / batch_size))
     act = []
     for i in tqdm(range(num_batches)):
         x = images[i * batch_size:i * batch_size + batch_size]
