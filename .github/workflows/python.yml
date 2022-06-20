@@ -28,7 +28,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip wheel setuptools
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          pip install jax-fid
+          pip install "jax-fid[testing]"
       - name: Test with PyTest
         run: |
           pytest -v .
