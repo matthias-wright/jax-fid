@@ -14,13 +14,13 @@ setup(name='jax-fid',
       entry_points = {
           'console_scripts': ['pycli = pycli.__main__:main']
       },
-      install_requires=['numpy==1.19.5',
-                        'requests==2.23.0',
+      install_requires=['numpy>=1.19.5',
+                        'requests>=2.23.0',
                         'jax',
                         'jaxlib',
                         'flax',
-                        'Pillow==7.1.2',
-                        'tqdm==4.60.0',
+                        'Pillow>=7.1.2',
+                        'tqdm>=4.60.0',
                         'scipy'],
       extras_require={
         'testing': ['pytest'],
