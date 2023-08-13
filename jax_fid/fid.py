@@ -16,27 +16,16 @@ def compute_statistics_with_mmap(path, mmap_filname, params, apply_fn, batch_siz
     preprocessing_fn = lambda x: x.astype(float) / 255
     image_data_generator = ImageDataGenerator(preprocessing_function=preprocessing_fn)
     directory_iterator = image_data_generator.flow_from_directory(
-        path, batch_size=batch_size, target_size=img_size, shuffle=False
+        path, batch_size=batch_size, target_size=img_size, shuffle=False, class_mode=None
     )
+    assert directory_iterator.samples > 0, "No images found. Make sure your images are within a subdirectory."
 
     get_batch_fn = lambda: directory_iterator.next()[0]
     num_activations = directory_iterator.samples
     num_batches = len(directory_iterator)
     dtype = 'float32'
     activation_dim = 2048
-
-    assert os.path.isdir(path), "Path is not dir"
-    print(os.listdir(path))
-
-    with open(mmap_filname, 'w+b') as f:
-        print('dtype size', np.dtype(dtype).itemsize)
-        print('num_batches', num_batches)
-        file_size = np.dtype(dtype).itemsize * activation_dim * num_batches * batch_size
-        print(file_size)
-        f.write(b"\0" * file_size)
-    print("testtest3")
-    #return
-
+    
     mm = np.memmap(mmap_filname, dtype=dtype, mode='w+', shape=(num_activations, activation_dim))
 
     activation_sum = np.zeros((activation_dim))
