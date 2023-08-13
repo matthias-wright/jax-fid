@@ -26,6 +26,8 @@ def compute_statistics_with_mmap(path, mmap_filname, params, apply_fn, batch_siz
     activation_dim = 2048
 
     with open(mmap_filname, 'w+b') as f:
+        print('dtype size', np.dtype(dtype).itemsize)
+        print('num_batches', num_batches)
         file_size = np.dtype(dtype).itemsize * activation_dim * num_batches * batch_size
         print(file_size)
         f.write(b"\0" * file_size)
