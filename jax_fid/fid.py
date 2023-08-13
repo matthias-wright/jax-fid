@@ -25,7 +25,19 @@ def compute_statistics_with_mmap(path, mmap_filname, params, apply_fn, batch_siz
     num_batches = len(directory_iterator)
     dtype = 'float32'
     activation_dim = 2048
-    
+
+    assert os.path.isdir(path), "Path is not dir"
+    print(os.listdir(path))
+
+    #with open(mmap_filname, 'w+b') as f:
+    #    print('dtype size', np.dtype(dtype).itemsize)
+    #    print('num_batches', num_batches)
+    #    file_size = np.dtype(dtype).itemsize * activation_dim * num_batches * batch_size
+    #    print(file_size)
+    #    f.write(b"\0" * file_size)
+    #print("testtest3")
+    #return
+
     mm = np.memmap(mmap_filname, dtype=dtype, mode='w+', shape=(num_activations, activation_dim))
 
     activation_sum = np.zeros((activation_dim))
