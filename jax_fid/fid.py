@@ -26,6 +26,7 @@ def compute_statistics_with_mmap(path, mmap_filname, params, apply_fn, batch_siz
     activation_dim = 2048
 
     assert os.path.isdir(path), "Path is not dir"
+    print(os.listdir(path))
 
     with open(mmap_filname, 'w+b') as f:
         print('dtype size', np.dtype(dtype).itemsize)
