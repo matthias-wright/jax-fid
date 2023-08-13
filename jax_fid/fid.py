@@ -16,7 +16,7 @@ def compute_statistics_with_mmap(path, mmap_filname, params, apply_fn, batch_siz
     preprocessing_fn = lambda x: x.astype(float) / 255
     image_data_generator = ImageDataGenerator(preprocessing_function=preprocessing_fn)
     directory_iterator = image_data_generator.flow_from_directory(
-        path, batch_size=batch_size, target_size=img_size, shuffle=False, class_mode=None
+        path, batch_size=batch_size, target_size=img_size, shuffle=False
     )
     assert directory_iterator.samples > 0, "No images found. Make sure your images are within a subdirectory."
 
