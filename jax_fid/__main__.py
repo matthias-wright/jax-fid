@@ -46,7 +46,7 @@ def main():
         assert os.path.isdir(args.path1) or args.path1.endswith('.npz'), 'path1 must be a directory or an .npz file'
         assert os.path.isdir(args.path2) or args.path2.endswith('.npz'), 'path2 must be a directory or an .npz file'
         if args.mmap:
-            mu1, sigma1 = fid.compute_statistics_with_mmap(args.path1, args.mmap_filem params, apply_fn, args.batch_size, args.img_size)
+            mu1, sigma1 = fid.compute_statistics_with_mmap(args.path1, args.mmap_file, params, apply_fn, args.batch_size, args.img_size)
             mu2, sigma2 = fid.compute_statistics_with_mmap(args.path2, args.mmap_file, params, apply_fn, args.batch_size, args.img_size)
         else:
             mu1, sigma1 = fid.compute_statistics(args.path1, params, apply_fn, args.batch_size, args.img_size)
