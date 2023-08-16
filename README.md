@@ -37,8 +37,8 @@ where `N` is the GPU index.
 `--precompute` - If True, pre-compute statistics for given image directory.  
 `--img_dir` - Path to image directory for pre-computing statistics.   
 `--out_dir` - Path where pre-computed statistics are stored.   
-`--mmap` - If True, use mmap to compute statistics.
-`--mmap_file` - Name of mmap file. Only used if mmap is True.
+`--mmap` - If True, use mmap to compute statistics.   
+`--mmap_file` - Name of mmap file. Only used if mmap is True.   
 
 
 ## License
