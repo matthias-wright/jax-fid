@@ -92,13 +92,13 @@ class InceptionV3(nn.Module):
                        dtype=self.dtype)(x, train)
         x = InceptionB(params_dict=utils.get(self.params_dict, 'Mixed_6a'),
                        dtype=self.dtype)(x, train)
-        x = InceptionC(channels_7x7=128,
+        x = InceptionC(channels_7x7=192,
                        params_dict=utils.get(self.params_dict, 'Mixed_6b'),
                        dtype=self.dtype)(x, train)
-        x = InceptionC(channels_7x7=160,
+        x = InceptionC(channels_7x7=192,
                        params_dict=utils.get(self.params_dict, 'Mixed_6c'),
                        dtype=self.dtype)(x, train)
-        x = InceptionC(channels_7x7=160,
+        x = InceptionC(channels_7x7=192,
                        params_dict=utils.get(self.params_dict, 'Mixed_6d'),
                        dtype=self.dtype)(x, train)
         x = InceptionC(channels_7x7=192,
