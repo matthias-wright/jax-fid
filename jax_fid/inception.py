@@ -92,13 +92,13 @@ class InceptionV3(nn.Module):
                        dtype=self.dtype)(x, train)
         x = InceptionB(params_dict=utils.get(self.params_dict, 'Mixed_6a'),
                        dtype=self.dtype)(x, train)
-        x = InceptionC(channels_7x7=192,
+        x = InceptionC(channels_7x7=128,
                        params_dict=utils.get(self.params_dict, 'Mixed_6b'),
                        dtype=self.dtype)(x, train)
-        x = InceptionC(channels_7x7=192,
+        x = InceptionC(channels_7x7=160,
                        params_dict=utils.get(self.params_dict, 'Mixed_6c'),
                        dtype=self.dtype)(x, train)
-        x = InceptionC(channels_7x7=192,
+        x = InceptionC(channels_7x7=160,
                        params_dict=utils.get(self.params_dict, 'Mixed_6d'),
                        dtype=self.dtype)(x, train)
         x = InceptionC(channels_7x7=192,
@@ -318,7 +318,7 @@ class InceptionC(nn.Module):
                                    padding=((3, 3), (0, 0)),
                                    params_dict=utils.get(self.params_dict, 'branch7x7dbl_4'),
                                    dtype=self.dtype)(branch7x7dbl, train)
-        branch7x7dbl = BasicConv2d(out_channels=self.channels_7x7,
+        branch7x7dbl = BasicConv2d(out_channels=192,
                                    kernel_size=(1, 7),
                                    padding=((0, 0), (3, 3)),
                                    params_dict=utils.get(self.params_dict, 'branch7x7dbl_5'),
