@@ -49,13 +49,15 @@ class InceptionV3(nn.Module):
             self.num_classes_ = self.num_classes
 
     @nn.compact
-    def __call__(self, x, train=True, rng=jax.random.PRNGKey(0)):
+    def __call__(self, x, train=True, rng: PRNGKey=None):
         """
         Args:
             x (tensor): Input image, shape [B, H, W, C].
             train (bool): If True, training mode.
             rng (jax.random.PRNGKey): Random seed.
         """
+        if rng is None:
+            rng = jax.random.PRNGKey(0)
         x = self._transform_input(x)
         x = BasicConv2d(out_channels=32,
                         kernel_size=(3, 3),
